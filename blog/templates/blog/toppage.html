@@ -1,11 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello Django</h1>
-</body>
-</html>
+{% extends 'blog/base.html' %} 
+
+{% block content %} 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>イントロ</th>
+                <th>本文</th>
+                <th>作成日</th>
+                <th>ボタン</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+        <!-- <h2>{{ post.title }}</h2>
+        <small>{{ post.intro }}</small>
+        <p>{{ post.body }}</p>
+        </hr> -->
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.intro }}</td>
+                <td>{{ post.body }}</td>
+                <td>{{ post.create_date }}</td>
+                <td><a href="{% url 'post_detail' post.slug %}">もっと見る</a></td>
+            </tr>
+        {% endfor %}    
+        </tbody>    
+    </table>
+    
+{% endblock %}

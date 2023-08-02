@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %} 
+
+{% block content %} 
+<h1>{{ post.title }}</h1>
+<small>{{ post.create_date }}</small>
+<p>{{ post.intro }}</p>
+<p>{{ post.body }}</p>
+</hr>
+
+<a href="{% url 'toppage' %}">戻る</a>
+{% endblock %}
