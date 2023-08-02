@@ -7,5 +7,21 @@
 <p>{{ post.body }}</p>
 </hr>
 
+<!-- コメントエリア -->
+<h2>コメント投稿</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-info" value="送信">
+</form>
+
+<!-- コメント一覧エリア -->
+<h2>コメント一覧</h2>
+{% for comment in post.comments.all %}
+<h4>{{ comment.name }}</h4>
+<small>{{ comment.email }}</small>
+<p>{{ comment.body }}</p>
+{% endfor %}
+
 <a href="{% url 'toppage' %}">戻る</a>
 {% endblock %}
